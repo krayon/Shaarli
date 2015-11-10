@@ -150,8 +150,11 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-// Directories creations (Note that your web host may require different rights than 705.)
-if (!is_writable(realpath(dirname(__FILE__)))) die('<pre>ERROR: Shaarli does not have the right to write in its own directory.</pre>');
+// Directory permissions
+if (!is_writable(realpath($GLOBALS['config']['DATADIR']    ))) die('<pre>ERROR: Shaarli does not have the right to write to the data directory ('          .$GLOBALS['config']['DATADIR'].    ').</pre>');
+if (!is_writable(realpath($GLOBALS['config']['CACHEDIR']   ))) die('<pre>ERROR: Shaarli does not have the right to write to the cache directory ('         .$GLOBALS['config']['CACHEDIR'].   ').</pre>');
+if (!is_writable(realpath($GLOBALS['config']['PAGECACHE']  ))) die('<pre>ERROR: Shaarli does not have the right to write to the page cache directory ('    .$GLOBALS['config']['PAGECACHE'].  ').</pre>');
+if (!is_writable(realpath($GLOBALS['config']['RAINTPL_TMP']))) die('<pre>ERROR: Shaarli does not have the right to write to the template temp directory (' .$GLOBALS['config']['RAINTPL_TMP'].').</pre>');
 
 // Handling of old config file which do not have the new parameters.
 if (empty($GLOBALS['title'])) $GLOBALS['title']='Shared links on '.escape(index_url($_SERVER));
