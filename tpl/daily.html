@@ -71,6 +71,9 @@
                         {if="$link.thumbnail"}
                             <div class="dailyEntryThumbnail">{$link.thumbnail}</div>
                         {/if}
+                        {loop="$link.thumbnail_plugin"}
+                            <div class="dailyEntryThumbnail">{$value}</div>
+                        {/loop}
                         <div class="dailyEntryDescription">{$link.formatedDescription}</div>
 
                         <div class="dailyEntryFooter">

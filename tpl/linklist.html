@@ -51,6 +51,9 @@
         <li{if="$value.class"} class="{$value.class}"{/if}>
             <a id="{$value.shorturl}"></a>
             <div class="thumbnail">{$value.url|thumbnail}</div>
+            {loop="$value.thumbnail_plugin"}
+                <div class="thumbnail">{$value}</div>
+            {/loop}
             <div class="linkcontainer">
                 {if="isLoggedIn()"}
                     <div class="linkeditbuttons">
