@@ -123,18 +123,6 @@ function hook_qrthumbnail_render_linklist($data) {
  * @return array altered $data.
  */
 function hook_qrthumbnail_render_editlink($data) {
-    // Load HTML into a string
-    $html = file_get_contents(PluginManager::$PLUGINS_PATH .'/qrthumbnail/qrthumbnail.txt.html');
-
-if (!empty($data['link']['qrthumbnail'])) {
-$html = sprintf($html, $data['link']['qrthumbnail']);
-} else {
-$html = sprintf($html, '');
-}
-// field_plugin
-$data['edit_link_plugin'][] = $html;
-
-
     // Delete old thumbnail QR (just in case)
     if (!empty($data['link']['qrthumbnail'])) {
         $pngFile = get_qrthumbnail_file($data['link']['qrthumbnail']);
